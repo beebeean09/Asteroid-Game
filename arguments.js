@@ -87,7 +87,7 @@ function sayHelloNTimes(name, n) {
 
 // sayHelloNTimes("Sally", 6);
 const test = summ.curry(3);
-console.log(test(5)(3)(8));
+console.log(test(5)(3)(8)); // => _curry(5)._curry(3)._curry(8) => if (numArgs === 3) => summ(5, 3 ,8)
 
 
 
