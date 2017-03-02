@@ -60,6 +60,7 @@ function curriedSum(numArgs) {
 // console.log(test(5)(30)(20)(1));
 
 
+// using call
 Function.prototype.curry = function(numArgs) {
   let args = [];
   let originalFunction = this;
@@ -68,6 +69,23 @@ Function.prototype.curry = function(numArgs) {
     args.push(arg);
     if (args.length === numArgs) {
       return originalFunction.call(originalFunction, ...args);
+    } else {
+      return _curry;
+    }
+  }
+  return _curry;
+};
+
+
+// using apply
+Function.prototype.curry = function(numArgs) {
+  let result = [];
+  let fn = this;
+
+  function _curry(arg) {
+    result.push(arg);
+    if (result.length === numArgs) {
+      return fn.apply(null, result);
     } else {
       return _curry;
     }
